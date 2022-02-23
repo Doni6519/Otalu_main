@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}House List{% endblock title %}
+
+{% block content %}
+  {% for house in house_list %}
+  <div class="container-sm ">
+    <div class="card mb-3 mt-5 " style="max-height: ;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{% static 'images/bag.jpg' %}" class="img-fluid " style="max-height: ;" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{{ house.get_absolute_url }}">{{ house.title }}</a></h5>
+            <p class="card-text">{{house.description}}</p>
+            <p class="card-text"><small class="text-muted">updated {{house.date_created}}</small></p>
+            <input type="button" class="btn btn-outline-success" value="View">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endblock content %}
